@@ -1,7 +1,15 @@
+import { Grid } from "@mui/material";
 import React from "react";
+import Register from "../sections/auth/Register";
 
-function Register() {
-  return <div>Register</div>;
+function RegisterPage() {
+  return (
+    <Grid container justifyContent="center" alignItems="center" pt="5%">
+      <Grid item>
+        <Register />
+      </Grid>
+    </Grid>
+  );
 }
 
-export default Register;
+export default RegisterPage;

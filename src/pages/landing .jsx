@@ -1,7 +1,13 @@
+import { Box } from "@mui/material";
 import React from "react";
+import Landing from "../sections/landing/Landing";
 
-function Landing() {
-  return <div>Landing </div>;
+function LandingPage() {
+  return (
+    <Box>
+      <Landing />
+    </Box>
+  );
 }
 
-export default Landing;
+export default LandingPage;
