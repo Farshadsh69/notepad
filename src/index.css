@@ -1,5 +1,37 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: cursive;
 
 }
+.imgStyle{
+    width: 700px;
+    height: 550px;
+}
+@media screen and (max-width: 480px) {
+    .imgStyle {
+        width: 250px;
+    height: 200px;
+    }
+  }
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(40, 51, 65); 
+    border-radius: 8px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(77, 77, 77); 
+    border-radius: 8px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #000000; 
+  }
