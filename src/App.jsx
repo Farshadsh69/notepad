@@ -38,7 +38,7 @@ const HeaderStyle = styled(Box)(() => ({
 function App() {
   const [darkMode, setDarkMode] = useState();
   const darkTheme = createTheme({
-    typography: { body1: "#727077" },
+    typography: { body1: "#727077", fontFamily: "cursive" },
     palette: {
       primary: { main: "#b6b5b5" },
       secondary: { main: "#fff" },
@@ -46,7 +46,7 @@ function App() {
     },
   });
   const LightTheme = createTheme({
-    typography: { body1: "#727077" },
+    typography: { body1: "#727077", fontFamily: "cursive" },
     palette: {
       primary: { main: "#727077" },
       secondary: { main: "#000" },
