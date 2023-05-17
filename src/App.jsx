@@ -34,6 +34,10 @@ const HeaderStyle = styled(Box)(() => ({
   borderBottom: "5px solid #00000091",
   borderBottomLeftRadius: "25%",
   borderBottomRightRadius: "25%",
+  position: "fixed",
+  width: "100%",
+  backgroundColor: "#ffffffc2",
+  zIndex: 999999,
 }));
 function App() {
   const [darkMode, setDarkMode] = useState();
