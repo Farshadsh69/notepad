@@ -1,11 +1,12 @@
 {
-  "user": [],
-  "notes": [
+  "user": [
     {
-      "id": 840,
-      "title": "asd",
-      "note": "asdasdasd",
-      "date": "2023/5/18|'17:58"
+      "fullName": "farshadshabani",
+      "email": "farshadshabani69@gmail.com",
+      "id": "fz666",
+      "password": "farshad1369",
+      "newDate": "2023/5/18|'22:12:15"
     }
-  ]
+  ],
+  "notes": []
 }
