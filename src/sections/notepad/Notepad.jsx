@@ -23,6 +23,7 @@ import AddIcon from "@mui/icons-material/Add";
 import * as React from "react";
 import AddNoteDialog from "../../component/AddNoteDialog";
 import Notes from "../../component/Notes";
+import { useNavigate } from "react-router";
 
 const drawerWidth = 230;
 
@@ -84,11 +85,18 @@ const IconButtonAddStyle = styled(IconButton)(() => ({
 
 export default function Notepad() {
   const theme = useTheme();
+  const navigator = useNavigate();
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [openPaper1, setOpenPaper1] = React.useState(false);
   const [openPaper2, setOpenPaper2] = React.useState(false);
   const [openDialog, setOpenDialog] = React.useState(false);
 
+  React.useEffect(() => {
+    let id = sessionStorage.getItem("id");
+    if (id === "" || id === null) {
+      navigator("/login");
+    }
+  }, []);
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
   };
@@ -107,6 +115,8 @@ export default function Notepad() {
       setTimeout(() => {
         setOpenPaper2(false);
       }, 3000);
+    } else if (e === "Logout") {
+      navigator("/login");
     }
   };
   const stylePaper = {

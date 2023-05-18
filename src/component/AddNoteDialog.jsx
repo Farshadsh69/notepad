@@ -1,15 +1,11 @@
-import styled from "@emotion/styled";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
-import { random } from "lodash";
 import * as React from "react";
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 export default function AddNoteDialog({ openDialog, setOpenDialog }) {
@@ -18,27 +14,6 @@ export default function AddNoteDialog({ openDialog, setOpenDialog }) {
 
   const countTitle = 50;
   const countNote = 500;
-
-  //   const {
-  //     register,
-  //     handleSubmit,
-  //     formState: { errors },
-  //   } = useForm();
-  //   const onSubmit = (data) => {
-  //     console.log(data);
-  //     setOpenDialog(false);
-  //     async function postData(url = "", data = {}) {
-  //       const response = await fetch(url, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(data),
-  //       });
-  //       return response.json();
-  //     }
-  //     postData("http://localhost:8000/notes", data);
-  //   };
 
   const handleClose = () => {
     setOpenDialog(false);
@@ -53,7 +28,6 @@ export default function AddNoteDialog({ openDialog, setOpenDialog }) {
   let minutes = dateObj.getUTCMinutes();
 
   let date = year + "/" + month + "/" + day + "|'" + hours + ":" + minutes;
-  console.log("date", date);
   //.................................................................
   const handleSave = () => {
     setOpenDialog(false);
@@ -80,7 +54,6 @@ export default function AddNoteDialog({ openDialog, setOpenDialog }) {
     }
     postData("http://localhost:8000/notes", data);
   };
-  useEffect(() => {}, []);
 
   return (
     <Dialog
