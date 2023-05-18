@@ -22,6 +22,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import * as React from "react";
 import AddNoteDialog from "../../component/AddNoteDialog";
+import Notes from "../../component/Notes";
 
 const drawerWidth = 230;
 
@@ -117,11 +118,22 @@ export default function Notepad() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <MuiAppBar sx={{ display: "block", mt: 6 }} open={openDrawer}>
-        <Toolbar>
-          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
+      <MuiAppBar sx={{ mt: 6 }} open={openDrawer}>
+        <Toolbar
+          sx={{
+            "&.MuiToolbar-root": {
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            },
+          }}
+        >
+          <Typography variant="h6" component="div">
             Notepad
           </Typography>
+          <IconButtonAddStyle onClick={() => setOpenDialog(true)}>
+            <AddIcon />
+          </IconButtonAddStyle>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -135,9 +147,8 @@ export default function Notepad() {
       </MuiAppBar>
       <Main sx={{ mt: 5 }} open={openDrawer}>
         <DrawerHeader />
-        <IconButtonAddStyle onClick={() => setOpenDialog(true)}>
-          <AddIcon />
-        </IconButtonAddStyle>
+
+        <Notes />
       </Main>
       <Drawer
         sx={{
