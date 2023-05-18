@@ -8,6 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import { random } from "lodash";
 import * as React from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
@@ -43,9 +44,19 @@ export default function AddNoteDialog({ openDialog, setOpenDialog }) {
     setOpenDialog(false);
   };
   const id = Math.floor(Math.random() * 1000);
+  //...............................Date
+  let dateObj = new Date();
+  let month = dateObj.getUTCMonth() + 1; //months from 1-12
+  let day = dateObj.getUTCDate();
+  let year = dateObj.getUTCFullYear();
+  let hours = dateObj.getUTCHours();
+  let minutes = dateObj.getUTCMinutes();
+
+  let date = year + "/" + month + "/" + day + "|'" + hours + ":" + minutes;
+  console.log("date", date);
+  //.................................................................
   const handleSave = () => {
     setOpenDialog(false);
-    const date = new Date();
     const data = { id, title, note, date };
     async function postData(url = "", data = {}) {
       const response = await fetch(url, {
@@ -59,6 +70,9 @@ export default function AddNoteDialog({ openDialog, setOpenDialog }) {
         toast.success("saved successfully");
         setNote("");
         setTitle("");
+        setInterval(() => {
+          window.location.reload();
+        }, 2000);
       } else {
         toast.error("saved Failed");
       }
@@ -66,6 +80,7 @@ export default function AddNoteDialog({ openDialog, setOpenDialog }) {
     }
     postData("http://localhost:8000/notes", data);
   };
+  useEffect(() => {}, []);
 
   return (
     <Dialog
