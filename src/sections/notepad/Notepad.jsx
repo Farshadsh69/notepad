@@ -25,6 +25,7 @@ import { useNavigate } from "react-router";
 import AddNoteDialog from "../../component/AddNoteDialog";
 import Notes from "../../component/Notes";
 import ShowDialog from "../../component/ShowDialog";
+import CloseIcon from "@mui/icons-material/Close";
 
 const drawerWidth = 230;
 
@@ -83,11 +84,19 @@ const IconButtonAddStyle = styled(IconButton)(() => ({
   height: 50,
   backgroundColor: "#2eb8f2",
 }));
+const IconButtonCloseStyle = styled(IconButton)(() => ({
+  width: 50,
+  height: 50,
+  backgroundColor: "red",
+  marginBottom: 10,
+  float: "right",
+}));
 
 export default function Notepad() {
   const theme = useTheme();
   const navigator = useNavigate();
   const [openDrawer, setOpenDrawer] = React.useState(false);
+  const [openToDo, setOpenToDo] = React.useState(true);
   const [openPaper1, setOpenPaper1] = React.useState(false);
   const [openPaper2, setOpenPaper2] = React.useState(false);
   const [openDialog, setOpenDialog] = React.useState(false);
@@ -151,6 +160,12 @@ export default function Notepad() {
     setChangeText(false);
   };
 
+  const handelTODO = () => {
+    setOpenToDo(true);
+    setOpenDrawer(false);
+  };
+
+  console.log("state", openToDo);
   const loginUserDate = getUser?.newDate;
   console.log("z", loginUserDate);
   return (
@@ -186,7 +201,14 @@ export default function Notepad() {
       <Main sx={{ mt: 5 }} open={openDrawer}>
         <DrawerHeader />
 
-        <Notes />
+        {openToDo && (
+          <Box>
+            <IconButtonCloseStyle onClick={() => setOpenToDo(false)}>
+              <CloseIcon />
+            </IconButtonCloseStyle>
+            <Notes />
+          </Box>
+        )}
       </Main>
       <Drawer
         sx={{
@@ -233,7 +255,9 @@ export default function Notepad() {
       {openPaper1 && (
         <PaperStyle sx={{ position: "absolute" }}>
           <Button style={stylePaper}>Record, edit and delete notes</Button>
-          <Button style={stylePaper}>Add, edit and delete TO-DO list</Button>
+          <Button style={stylePaper} onClick={handelTODO}>
+            Add, edit and delete TO-DO list
+          </Button>
         </PaperStyle>
       )}
       {openPaper2 && (

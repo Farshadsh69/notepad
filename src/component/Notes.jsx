@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
+import { Stack } from "@mui/system";
 import React, { useLayoutEffect, useState } from "react";
 import Note from "./Note";
-import { Stack } from "@mui/system";
 const NotesStyle = styled(Stack)(() => ({
   flexDirection: "row",
   flexWrap: "wrap",
@@ -22,11 +22,16 @@ function Notes() {
     getData();
   }, []);
   return (
-    <NotesStyle gap={5}>
-      {data.map(({ id, date, title, note }) => (
-        <Note key={id} date={date} id={id} title={title} note={note} />
-      ))}
-    </NotesStyle>
+    <Box>
+      <Typography variant="h6" color="primary.main" fontWeight="bold" mb={2}>
+        Add, edit and delete TO-DO list
+      </Typography>
+      <NotesStyle gap={5}>
+        {data.map(({ id, date, title, note }) => (
+          <Note key={id} date={date} id={id} title={title} note={note} />
+        ))}
+      </NotesStyle>
+    </Box>
   );
 }
 

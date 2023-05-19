@@ -1,16 +1,18 @@
 import styled from "@emotion/styled";
 import { Box, IconButton, Stack, TextField, Typography } from "@mui/material";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
+import EditNoteIcon from "@mui/icons-material/EditNote";
 
-import React from "react";
+import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { toast } from "react-toastify";
+import UpdateNoteDialog from "./UpdateNoteDialog";
 const NoteStyle = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
   width: 250,
-  height: 250,
+  height: 300,
   backgroundColor: "background.main",
   padding: 10,
   borderRadius: 10,
@@ -72,6 +74,7 @@ const StyledTextarea = styled(TextareaAutosize)(
   `
 );
 function Note({ title, note, date, id }) {
+  const [openUpdateNote, setOpenUpdateNote] = useState(false);
   async function deleteItem() {
     const response = await fetch(`http://localhost:8000/notes/${id}`, {
       method: "DELETE",
@@ -92,6 +95,10 @@ function Note({ title, note, date, id }) {
   return (
     <NoteStyle sx={{ backgroundColor: "background.light" }}>
       <Stack>
+        <IconButton onClick={() => setOpenUpdateNote(true)}>
+          <EditNoteIcon color="success" />
+        </IconButton>
+        {/* <Typography color="red">id : {id}</Typography> */}
         <Typography variant="h5" color="primary.main" mb={0.5}>
           {title}
         </Typography>
@@ -107,6 +114,13 @@ function Note({ title, note, date, id }) {
           <DeleteIcon color="error" />
         </IconButton>
       </Stack>
+      <UpdateNoteDialog
+        openDialog={openUpdateNote}
+        setOpenDialog={setOpenUpdateNote}
+        id={id}
+        title={title}
+        note={note}
+      />
     </NoteStyle>
   );
 }
