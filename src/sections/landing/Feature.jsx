@@ -17,6 +17,8 @@ const PaperStyle = styled(Paper)(() => ({
   padding: 15,
   borderRadius: 10,
   gap: 10,
+  width: 200,
+  height: 200,
 }));
 function Feature({ title, subtitle, icon }) {
   return (

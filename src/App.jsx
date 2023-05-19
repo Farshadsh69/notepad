@@ -59,15 +59,15 @@ function App() {
     },
   });
 
-  let darkMode = sessionStorage.getItem("darkMode");
+  let darkMode = localStorage.getItem("darkMode");
   const handelLightMode = () => {
-    sessionStorage.setItem("darkMode", "dark");
-    darkMode = sessionStorage.getItem("darkMode");
+    localStorage.setItem("darkMode", "dark");
+    darkMode = localStorage.getItem("darkMode");
     window.location.reload();
   };
   const handelDarkMode = () => {
-    sessionStorage.setItem("darkMode", "light");
-    darkMode = sessionStorage.getItem("darkMode");
+    localStorage.setItem("darkMode", "light");
+    darkMode = localStorage.getItem("darkMode");
     window.location.reload();
   };
   return (
