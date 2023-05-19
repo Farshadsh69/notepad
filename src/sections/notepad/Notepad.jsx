@@ -254,7 +254,9 @@ export default function Notepad() {
       </Drawer>
       {openPaper1 && (
         <PaperStyle sx={{ position: "absolute" }}>
-          <Button style={stylePaper}>Record, edit and delete notes</Button>
+          <Button style={stylePaper} onClick={() => setOpenDialog(true)}>
+            Record, edit and delete notes
+          </Button>
           <Button style={stylePaper} onClick={handelTODO}>
             Add, edit and delete TO-DO list
           </Button>

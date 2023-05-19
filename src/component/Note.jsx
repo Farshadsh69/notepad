@@ -99,7 +99,12 @@ function Note({ title, note, date, id }) {
           <EditNoteIcon color="success" />
         </IconButton>
         {/* <Typography color="red">id : {id}</Typography> */}
-        <Typography variant="h5" color="primary.main" mb={0.5}>
+        <Typography
+          variant="h5"
+          color="primary.main"
+          mb={0.5}
+          overflow="hidden"
+        >
           {title}
         </Typography>
         <StyledTextarea value={note} />
