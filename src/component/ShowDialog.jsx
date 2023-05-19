@@ -5,7 +5,7 @@ import { CircularProgress } from "react-cssfx-loading";
 import React from "react";
 const RootStyle = styled(Dialog)(() => ({
   "& .MuiDialog-paper": {
-    width: 400,
+    width: 350,
     height: 100,
     backgroundColor: "background.main",
     color: "primary.main",
@@ -22,7 +22,7 @@ function ShowDialog({ openDialog, setOpenDialog, text }) {
   return (
     <RootStyle open={openDialog} onClose={handleClose}>
       {text ? (
-        <Typography variant="h4">{text}</Typography>
+        <Typography variant="h5">{text}</Typography>
       ) : (
         <CircularProgress
           color="blue"

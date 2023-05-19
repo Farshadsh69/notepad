@@ -1,18 +1,17 @@
 import styled from "@emotion/styled";
-import { Box, IconButton, Stack, TextField, Typography } from "@mui/material";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import EditNoteIcon from "@mui/icons-material/EditNote";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
 
-import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 import UpdateNoteDialog from "./UpdateNoteDialog";
 const NoteStyle = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-  width: 250,
-  height: 300,
+
   backgroundColor: "background.main",
   padding: 10,
   borderRadius: 10,
@@ -40,7 +39,7 @@ const grey = {
 };
 const StyledTextarea = styled(TextareaAutosize)(
   ({ theme }) => `
-    width: 222px;
+  width: 222px;
     height:145px !important;
     overflow-y: scroll !important;
     font-family: IBM Plex Sans, sans-serif;

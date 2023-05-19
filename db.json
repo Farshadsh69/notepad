@@ -1,38 +1,4 @@
 {
-  "user": [
-    {
-      "fullName": "farshadshabani",
-      "email": "farshadshabani69@gmail.com",
-      "id": "farshad",
-      "password": "123",
-      "newDate": "2023/5/19|'17:40:10"
-    },
-    {
-      "fullName": "farshadsh",
-      "email": "farshadshabani1369@gmail.com",
-      "id": "fz666",
-      "password": "123",
-      "newDate": "2023/5/19|'17:43:42"
-    }
-  ],
-  "notes": [
-    {
-      "id": 302,
-      "title": "asdas",
-      "note": "sdasdasdadasd",
-      "date": "2023/5/19|'17:42"
-    },
-    {
-      "id": 181,
-      "title": "asdsadasd",
-      "note": "asdasdasdasdasdad",
-      "date": "2023/5/19|'17:43"
-    },
-    {
-      "id": 198,
-      "title": "sdasdsdasdasdasdadasdasdasd",
-      "note": "sdasdasdasdsdasdasd",
-      "date": "2023/5/19|'17:44"
-    }
-  ]
+  "user": [],
+  "notes": []
 }

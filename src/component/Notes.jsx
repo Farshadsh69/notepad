@@ -23,7 +23,17 @@ function Notes() {
   }, []);
   return (
     <Box>
-      <Typography variant="h6" color="primary.main" fontWeight="bold" mb={2}>
+      <Typography
+        variant="h6"
+        color="primary.main"
+        fontWeight="bold"
+        mb={2}
+        sx={{
+          "@media (max-width: 500px)": {
+            fontSize: 10,
+          },
+        }}
+      >
         Add, edit and delete TO-DO list
       </Typography>
       <NotesStyle gap={5}>
