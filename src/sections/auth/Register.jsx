@@ -85,6 +85,7 @@ function Register() {
         sx={(theme) => ({
           [theme.breakpoints.down("sm")]: {
             width: "250px",
+            mt: 10,
           },
         })}
       >

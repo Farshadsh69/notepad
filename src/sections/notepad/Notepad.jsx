@@ -1,10 +1,11 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AddIcon from "@mui/icons-material/Add";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { Paper, Popover } from "@mui/material";
+import { Button, Paper } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -19,11 +20,11 @@ import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { styled, useTheme } from "@mui/material/styles";
-import AddIcon from "@mui/icons-material/Add";
 import * as React from "react";
+import { useNavigate } from "react-router";
 import AddNoteDialog from "../../component/AddNoteDialog";
 import Notes from "../../component/Notes";
-import { useNavigate } from "react-router";
+import ShowDialog from "../../component/ShowDialog";
 
 const drawerWidth = 230;
 
@@ -90,12 +91,22 @@ export default function Notepad() {
   const [openPaper1, setOpenPaper1] = React.useState(false);
   const [openPaper2, setOpenPaper2] = React.useState(false);
   const [openDialog, setOpenDialog] = React.useState(false);
-
+  const [openShowDialog, setOpenShowDialog] = React.useState(false);
+  const [getUser, setGetUser] = React.useState();
+  const [getIp, setGetIp] = React.useState();
+  const [changeText, setChangeText] = React.useState(false);
   React.useEffect(() => {
     let id = sessionStorage.getItem("id");
     if (id === "" || id === null) {
       navigator("/login");
     }
+    fetch("http://localhost:8000/user/" + id)
+      .then((res) => {
+        return res.json();
+      })
+      .then((resp) => {
+        setGetUser(resp);
+      });
   }, []);
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
@@ -124,7 +135,24 @@ export default function Notepad() {
     border: "1px solid ##e2e2e2",
     borderRight: "5px",
   };
+  const handelIp = () => {
+    fetch("https://geolocation-db.com/json/")
+      .then((res) => {
+        return res.json();
+      })
+      .then((resp) => {
+        setGetIp(resp.IPv4);
+      });
+    setOpenShowDialog(true);
+    setChangeText(true);
+  };
+  const handelLoginUserDate = () => {
+    setOpenShowDialog(true);
+    setChangeText(false);
+  };
 
+  const loginUserDate = getUser?.newDate;
+  console.log("z", loginUserDate);
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -204,23 +232,26 @@ export default function Notepad() {
       </Drawer>
       {openPaper1 && (
         <PaperStyle sx={{ position: "absolute" }}>
-          <Typography style={stylePaper}>
-            Record, edit and delete notes
-          </Typography>
-          <Typography style={stylePaper}>
-            Add, edit and delete TO-DO list
-          </Typography>
+          <Button style={stylePaper}>Record, edit and delete notes</Button>
+          <Button style={stylePaper}>Add, edit and delete TO-DO list</Button>
         </PaperStyle>
       )}
       {openPaper2 && (
         <PaperStyle2 sx={{ position: "absolute" }}>
-          <Typography style={stylePaper}>Viwe IP</Typography>
-          <Typography style={stylePaper}>
+          <Button style={stylePaper} onClick={handelIp}>
+            Viwe IP
+          </Button>
+          <Button style={stylePaper} onClick={handelLoginUserDate}>
             Viwe the date and time of login
-          </Typography>
+          </Button>
         </PaperStyle2>
       )}
       <AddNoteDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
+      <ShowDialog
+        openDialog={openShowDialog}
+        setOpenDialog={setOpenShowDialog}
+        text={changeText ? getIp : loginUserDate}
+      />
     </Box>
   );
 }
