@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 import PercentIcon from "@mui/icons-material/Percent";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import EventNoteIcon from "@mui/icons-material/EventNote";
+import CorporateFareIcon from "@mui/icons-material/CorporateFare";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import noteImage from "../../assets/images/1.png";
 import Feature from "./Feature";
@@ -31,7 +34,6 @@ const FeatureStyle = styled(Box)(() => ({
   marginBottom: 50,
 }));
 const FeatureBoxStyle = styled(Box)(() => ({
-  width: "100%",
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
@@ -39,31 +41,35 @@ const FeatureBoxStyle = styled(Box)(() => ({
   flexWrap: "wrap",
   marginTop: 30,
   gap: 10,
+  width: "100%",
 }));
 function Landing() {
   const data = [
     {
       id: 1,
-      title: "salam",
-      subtitle: "hnsjdshdjhdkjhjsdhksjdh",
-      icon: <PercentIcon />,
+      title: "Note-taking",
+      subtitle:
+        "The primary function of a notepad is to allow users to take notes quickly and easily.",
+      icon: <EventNoteIcon />,
     },
     {
       id: 2,
-      title: "salam",
-      subtitle: "hnsjdshdjhdkjhjsdhksjdh",
-      icon: <PercentIcon />,
+      title: "Organization",
+      subtitle:
+        "A good notepad should allow users to organize their notes in a way that makes sense to them, such as by date, category, or priority.",
+      icon: <CorporateFareIcon />,
     },
     {
       id: 3,
-      title: "salam",
-      subtitle: "hnsjdshdjhdkjhjsdhksjdh",
-      icon: <PercentIcon />,
+      title: "Reminders",
+      subtitle:
+        "notepads offer the ability to set reminders for specific notes or tasks.",
+      icon: <NotificationsActiveIcon />,
     },
     {
       id: 4,
       title: "100% Free",
-      subtitle: "hnsjdshdjhdkjhjsdhksjdh",
+      subtitle: "Completely free to use",
       icon: <PercentIcon />,
     },
   ];
@@ -82,10 +88,9 @@ function Landing() {
             p={2}
             sx={{ border: "1px solid #bbc0c6", borderRadius: 8 }}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-            hic repudiandae deleniti animi impedit itaque aliquid culpa ipsum
-            labore molestiae explicabo veritatis, neque eius, tempora eligendi
-            libero, non fugiat. Id.
+            Notepad is a very useful and professional tool for writing and
+            saving your notes. By using this page, you will be sure that you
+            always have access to your checklists and can update them.
           </Typography>
           <Link to="/notepad">
             <Button variant="contained" color="info">

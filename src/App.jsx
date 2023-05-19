@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import Brightness3Icon from "@mui/icons-material/Brightness3";
+import HomeIcon from "@mui/icons-material/Home";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { Box, IconButton, Typography } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -9,7 +10,6 @@ import Landing from "./pages/landing ";
 import Login from "./pages/login";
 import Notepad from "./pages/notepad";
 import RegisterPage from "./pages/register";
-import HomeIcon from "@mui/icons-material/Home";
 
 const Root = styled(Box)(() => ({
   height: "100vh",
@@ -40,7 +40,8 @@ const HeaderStyle = styled(Box)(() => ({
   zIndex: 999999,
 }));
 function App() {
-  const [darkMode, setDarkMode] = useState();
+  // const [darkMode, setDarkMode] = useState();
+
   const darkTheme = createTheme({
     typography: { body1: "#727077", fontFamily: "cursive" },
     palette: {
@@ -58,8 +59,19 @@ function App() {
     },
   });
 
+  let darkMode = localStorage.getItem("darkMode");
+  const handelLightMode = () => {
+    localStorage.setItem("darkMode", "dark");
+    darkMode = localStorage.getItem("darkMode");
+    window.location.reload();
+  };
+  const handelDarkMode = () => {
+    localStorage.setItem("darkMode", "light");
+    darkMode = localStorage.getItem("darkMode");
+    window.location.reload();
+  };
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : LightTheme}>
+    <ThemeProvider theme={darkMode === "dark" ? darkTheme : LightTheme}>
       <BrowserRouter>
         <HeaderStyle>
           <HomeStyle>
@@ -77,9 +89,15 @@ function App() {
             <Typography sx={{ cursor: "pointer", fontWeight: "bold" }}>
               <Link to="/register">Sign up</Link>
             </Typography>
-            <IconButton onClick={() => setDarkMode(!darkMode)}>
-              {darkMode ? <LightModeIcon /> : <Brightness3Icon />}
-            </IconButton>
+            {darkMode === "dark" ? (
+              <IconButton onClick={handelDarkMode}>
+                <Brightness3Icon />
+              </IconButton>
+            ) : (
+              <IconButton onClick={handelLightMode}>
+                <LightModeIcon />
+              </IconButton>
+            )}
           </AuthStyle>
         </HeaderStyle>
         <Root backgroundColor="background.main">
